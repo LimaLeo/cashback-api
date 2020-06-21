@@ -7,24 +7,23 @@ const User = client.define("users", {
         autoIncrement: true,
         primaryKey: true
     },
-    firtName: {
+    tx_firstName: {
         allowNull: false,
         type: DataTypes.STRING,
     },
-    lastName: {
+    tx_lastName: {
         allowNull: false,
         type: DataTypes.STRING,
     },
-    cpf: {
+    tx_cpf: {
         allowNull: false,
         type: DataTypes.STRING,
     },
-    email: {
+    tx_email: {
         allowNull: false,
         type: DataTypes.STRING,
     },
     dt_create_at: {
-        allowNull: false,
         type: Sequelize.DATE,
         defaultValue: new Date(),
     },

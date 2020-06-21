@@ -24,13 +24,9 @@ const Cashback = client.define("cashbacks", {
     },
     ni_user_id: {
         type: Sequelize.INTEGER,
-        references: 'user', 
-        referencesKey: 'ni_id'
     },
     ni_order_id: {
         type: Sequelize.INTEGER,
-        references: 'order', 
-        referencesKey: 'ni_id'
     }
   });
   

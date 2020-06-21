@@ -18,13 +18,9 @@ const OrderItem = client.define("orderItems", {
     },
     ni_order_id: {
         type: Sequelize.INTEGER,
-        references: 'order',
-        referencesKey: 'ni_id'
     },
     ni_item_id: {
         type: Sequelize.INTEGER,
-        references: 'item',
-        referencesKey: 'ni_id'
     },
 });
 

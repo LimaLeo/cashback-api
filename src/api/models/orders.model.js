@@ -17,13 +17,9 @@ const Order = client.define("orders", {
     },
     ni_status_type_id: {
         type: Sequelize.INTEGER,
-        references: 'statusType',
-        referencesKey: 'ni_id'
     },
     ni_user_id: {
         type: Sequelize.INTEGER,
-        references: 'user',
-        referencesKey: 'ni_id'
     },
 });
 
