@@ -1,5 +1,5 @@
 const Hapi = require("@hapi/hapi");
-const dotenv = require("dotenv");
+const dotenv = require("dotenv").config();
 
 const plugins = require("./plugins");
 const routes = require("./utils/routes");
@@ -18,13 +18,8 @@ async function start() {
     }
   });
 
-  dotenv.config();
-
   await server.register(plugins);
   server.log("info", "✅ All plugins registered successfully.");
-
-  server.app.redis = connect.redis;
-  server.log("info", "✅ Redis connected successfully.");
 
   server.route(await routes());
   server.log("info", "✅ All routes registered sucessfully.");
