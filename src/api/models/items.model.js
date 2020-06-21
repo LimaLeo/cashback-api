@@ -1,27 +1,19 @@
 const { Sequelize, Model, DataTypes } = require("sequelize");
 const client = require("../../connect/mysql");
 
-const User = client.define("user ", {
+const Item = client.define("items", {
     ni_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    firtName: {
+    bl_name: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.BOOLEAN,
     },
-    lastName: {
+    ni_price: {
         allowNull: false,
-        type: DataTypes.STRING,
-    },
-    cpf: {
-        allowNull: false,
-        type: DataTypes.STRING,
-    },
-    email: {
-        allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.DOUBLE,
     },
     dt_create_at: {
         allowNull: false,
@@ -30,4 +22,4 @@ const User = client.define("user ", {
     },
 });
 
-module.exports = User;
+module.exports = Item;

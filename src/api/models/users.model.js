@@ -1,31 +1,33 @@
 const { Sequelize, Model, DataTypes } = require("sequelize");
 const client = require("../../connect/mysql");
 
-const OrderItem = client.define("orderItems", {
+const User = client.define("users", {
     ni_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    ni_quantity: {
+    firtName: {
         allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
+    },
+    lastName: {
+        allowNull: false,
+        type: DataTypes.STRING,
+    },
+    cpf: {
+        allowNull: false,
+        type: DataTypes.STRING,
+    },
+    email: {
+        allowNull: false,
+        type: DataTypes.STRING,
     },
     dt_create_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: new Date(),
     },
-    ni_order_id: {
-        type: Sequelize.INTEGER,
-        references: 'order',
-        referencesKey: 'ni_id'
-    },
-    ni_item_id: {
-        type: Sequelize.INTEGER,
-        references: 'item',
-        referencesKey: 'ni_id'
-    },
 });
 
-module.exports = OrderItem;
+module.exports = User;

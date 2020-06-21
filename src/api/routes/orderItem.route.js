@@ -6,7 +6,7 @@ const getById = require("../resources/requests/getById.resource");
 module.exports = [
   {
     method: 'POST',
-    path: '/orderItem',
+    path: '/orderItems',
     options: {
       handler: (request, h) => {
         return {"name":"adam"};
@@ -19,7 +19,7 @@ module.exports = [
   },
   {
     method: 'PUT',
-    path: '/orderItem/{id}',
+    path: '/orderItems/{id}',
     options: {
       handler: (request, h) => {
         return {"name":"adam"};
@@ -32,7 +32,7 @@ module.exports = [
   },
   {
     method: 'DELETE',
-    path: '/orderItem/{id}',
+    path: '/orderItems/{id}',
     options: {
       handler: (request, h) => {
         return {"name":"adam"};
@@ -45,7 +45,7 @@ module.exports = [
   },
   {
     method: 'GET',
-    path: '/orderItem/{id}',
+    path: '/orderItems/{id}',
     options: {
       handler: (request, h) => {
         return {"name":"adam"};

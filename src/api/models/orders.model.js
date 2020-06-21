@@ -1,18 +1,13 @@
 const { Sequelize, Model, DataTypes } = require("sequelize");
 const client = require("../../connect/mysql");
 
-const Item = client.define("item", {
+const Order = client.define("orders", {
     ni_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    bl_name: {
-        allowNull: false,
-        type: DataTypes.BOOLEAN,
-    },
-    ni_price: {
-        allowNull: false,
+    ni_total: {
         type: DataTypes.DOUBLE,
     },
     dt_create_at: {
@@ -20,6 +15,16 @@ const Item = client.define("item", {
         type: Sequelize.DATE,
         defaultValue: new Date(),
     },
+    ni_status_type_id: {
+        type: Sequelize.INTEGER,
+        references: 'statusType',
+        referencesKey: 'ni_id'
+    },
+    ni_user_id: {
+        type: Sequelize.INTEGER,
+        references: 'user',
+        referencesKey: 'ni_id'
+    },
 });
 
-module.exports = Item;
+module.exports = Order;

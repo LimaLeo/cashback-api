@@ -1,41 +1,43 @@
-const saveItem = require("../resources/requests/saveItem.resource");
+const Joi = require('joi');
+const saveUser = require("../resources/requests/saveUser.resource");
+const updateUser = require("../resources/requests/updateUser.resource");
 const getById = require("../resources/requests/getById.resource");
 // const controllers = require('../controllers/authentication.login.controllers');
 
 module.exports = [
   {
     method: 'POST',
-    path: '/item',
+    path: '/users',
     options: {
       handler: (request, h) => {
-        return { "name": "adam" };
+        return {"name":"adam"};
       },
       tags: ['api'],
       validate: {
-        payload: saveItem,
+        payload: saveUser
       }
     }
   },
   {
     method: 'PUT',
-    path: '/item/{id}',
+    path: '/users/{id}',
     options: {
       handler: (request, h) => {
-        return { "name": "adam" };
+        return {"name":"adam"};
       },
       tags: ['api'],
       validate: {
         params: getById,
-        payload: saveItem,
+        payload: updateUser
       }
     }
   },
   {
     method: 'DELETE',
-    path: '/item/{id}',
+    path: '/users/{id}',
     options: {
       handler: (request, h) => {
-        return { "name": "adam" };
+        return {"name":"adam"};
       },
       tags: ['api'],
       validate: {
@@ -45,10 +47,10 @@ module.exports = [
   },
   {
     method: 'GET',
-    path: '/item/{id}',
+    path: '/users/{id}',
     options: {
       handler: (request, h) => {
-        return { "name": "adam" };
+        return {"name":"adam"};
       },
       tags: ['api'],
       validate: {

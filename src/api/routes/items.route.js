@@ -1,59 +1,58 @@
-const saveOrder = require("../resources/requests/saveOrder.resource");
-const updateOrder = require("../resources/requests/updateOrder.resource");
+const saveItem = require("../resources/requests/saveItem.resource");
 const getById = require("../resources/requests/getById.resource");
 // const controllers = require('../controllers/authentication.login.controllers');
 
 module.exports = [
   {
     method: 'POST',
-    path: '/order',
+    path: '/items',
     options: {
       handler: (request, h) => {
-        return {"name":"adam"};
+        return { "name": "adam" };
       },
       tags: ['api'],
       validate: {
-        payload: saveOrder,
+        payload: saveItem,
       }
     }
   },
   {
     method: 'PUT',
-    path: '/order/{id}',
+    path: '/items/{id}',
     options: {
       handler: (request, h) => {
-        return {"name":"adam"};
+        return { "name": "adam" };
       },
       tags: ['api'],
       validate: {
         params: getById,
-        payload: updateOrder,
+        payload: saveItem,
       }
     }
   },
   {
     method: 'DELETE',
-    path: '/order/{id}',
+    path: '/items/{id}',
     options: {
       handler: (request, h) => {
-        return {"name":"adam"};
+        return { "name": "adam" };
       },
       tags: ['api'],
       validate: {
-        params: getById,
+        params: getById
       }
     }
   },
   {
     method: 'GET',
-    path: '/order/{id}',
+    path: '/items/{id}',
     options: {
       handler: (request, h) => {
-        return {"name":"adam"};
+        return { "name": "adam" };
       },
       tags: ['api'],
       validate: {
-        params: getById,
+        params: getById
       }
     }
   },
