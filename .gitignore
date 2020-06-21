@@ -1,0 +1,15 @@
+# Logs
+logs
+*.log
+
+# Dependency directory
+node_modules
+
+#VSCode
+.vscode
+
+#Ignore build folder
+dist
+
+# Env
+.env
