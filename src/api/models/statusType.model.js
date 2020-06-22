@@ -20,6 +20,8 @@ const StatusType = client.define("statusType", {
         type: Sequelize.DATE,
         defaultValue: new Date(),
     },
+}, {
+    timestamps: false
 });
 
 module.exports = StatusType;

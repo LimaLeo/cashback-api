@@ -28,6 +28,8 @@ const Cashback = client.define("cashbacks", {
     ni_order_id: {
         type: Sequelize.INTEGER,
     }
-  });
-  
+}, {
+    timestamps: false
+});
+
 module.exports = Cashback;

@@ -21,6 +21,8 @@ const Order = client.define("orders", {
     ni_user_id: {
         type: Sequelize.INTEGER,
     },
+}, {
+    timestamps: false
 });
 
 module.exports = Order;

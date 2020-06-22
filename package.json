@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "./node_modules/nodemon/bin/nodemon.js src/index.js"
+    "dev": "node src/index.js"
   },
   "dependencies": {
     "@hapi/good": "^8.2.1",
@@ -19,6 +19,7 @@
     "joi": "^14.3.1",
     "mysql2": "^2.1.0",
     "nconf": "^0.10.0",
+    "object-mapper": "^6.2.0",
     "redis": "^3.0.2",
     "sequelize": "^5.21.13"
   },

@@ -20,6 +20,8 @@ const Item = client.define("items", {
         type: Sequelize.DATE,
         defaultValue: new Date(),
     },
+}, {
+    timestamps: false
 });
 
 module.exports = Item;

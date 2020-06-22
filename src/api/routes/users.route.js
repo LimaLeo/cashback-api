@@ -2,16 +2,14 @@ const Joi = require('joi');
 const saveUser = require("../resources/requests/saveUser.resource");
 const updateUser = require("../resources/requests/updateUser.resource");
 const getById = require("../resources/requests/getById.resource");
-// const controllers = require('../controllers/authentication.login.controllers');
+const controllers = require('../controllers/users.controller');
 
 module.exports = [
   {
     method: 'POST',
     path: '/users',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.create,
       tags: ['api'],
       validate: {
         payload: saveUser

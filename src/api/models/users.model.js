@@ -27,6 +27,8 @@ const User = client.define("users", {
         type: Sequelize.DATE,
         defaultValue: new Date(),
     },
+}, {
+    timestamps: false
 });
 
 module.exports = User;
