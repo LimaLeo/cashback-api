@@ -4,7 +4,7 @@ module.exports = {
     value: Joi.number()
         .integer()
         .required(),
-    userId: Joi
+    userId: Joi 
         .string()
         .required(),
 };
