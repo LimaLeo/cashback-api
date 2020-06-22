@@ -25,8 +25,21 @@ function createResponse(entry) {
   return objectMapper(entry, map);
 }
 
+function updateRequest(entry) {
+  const map = {
+    "firstName": "tx_firstName",
+    "lastName": "tx_lastName",
+    "cpf": "tx_cpf",
+  };
+
+  return objectMapper(entry, map);
+}
+
+
+
 
 module.exports = {
   createRequest,
   createResponse,
+  updateRequest,
 };

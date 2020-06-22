@@ -20,9 +20,7 @@ module.exports = [
     method: 'PUT',
     path: '/users/{id}',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.updateById,
       tags: ['api'],
       validate: {
         params: getById,
@@ -34,9 +32,7 @@ module.exports = [
     method: 'DELETE',
     path: '/users/{id}',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.deleteById,
       tags: ['api'],
       validate: {
         params: getById
@@ -47,9 +43,7 @@ module.exports = [
     method: 'GET',
     path: '/users/{id}',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.getById,
       tags: ['api'],
       validate: {
         params: getById
