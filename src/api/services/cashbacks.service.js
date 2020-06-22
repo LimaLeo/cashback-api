@@ -1,4 +1,4 @@
-const Cashback = require("../models/cashbacks.model");
+const Cashback = require("../models/entities/cashbacks.model");
 
 function create(cashback) {
     return new Promise(async (resolve, reject) => {

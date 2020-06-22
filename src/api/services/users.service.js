@@ -1,4 +1,4 @@
-const User = require("../models/users.model");
+const User = require("../models/entities/users.model");
 
 function create(user) {
     return new Promise(async (resolve, reject) => {

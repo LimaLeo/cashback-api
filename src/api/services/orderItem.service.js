@@ -1,4 +1,4 @@
-const OrderItem = require("../models/orderItem.model");
+const OrderItem = require("../models/entities/orderItem.model");
 
 function create(orderItem) {
     return new Promise(async (resolve, reject) => {

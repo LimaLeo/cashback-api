@@ -1,4 +1,4 @@
-const StatusType = require("../models/statusType.model");
+const StatusType = require("../models/entities/statusType.model");
 
 function create(statusType) {
     return new Promise(async (resolve, reject) => {

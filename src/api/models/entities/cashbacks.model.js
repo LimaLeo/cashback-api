@@ -1,17 +1,19 @@
 const { Sequelize, Model, DataTypes } = require("sequelize");
-const client = require("../../connect/mysql");
+const client = require("../../../connect/mysql");
 
-const Item = client.define("items", {
+const Cashback = client.define("cashbacks", {
     ni_id: {
-        type: Sequelize.INTEGER,
+        allowNull: false,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
+        type: Sequelize.INTEGER,
     },
-    bl_name: {
+    bl_status: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
+        defaultValue: false,
     },
-    ni_price: {
+    ni_value: {
         allowNull: false,
         type: DataTypes.DOUBLE,
     },
@@ -20,8 +22,14 @@ const Item = client.define("items", {
         type: Sequelize.DATE,
         defaultValue: new Date(),
     },
+    ni_user_id: {
+        type: Sequelize.INTEGER,
+    },
+    ni_order_id: {
+        type: Sequelize.INTEGER,
+    }
 }, {
     timestamps: false
 });
 
-module.exports = Item;
+module.exports = Cashback;

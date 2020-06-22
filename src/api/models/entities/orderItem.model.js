@@ -1,5 +1,5 @@
 const { Sequelize, Model, DataTypes } = require("sequelize");
-const client = require("../../connect/mysql");
+const client = require("../../../connect/mysql");
 
 const OrderItem = client.define("orderItems", {
     ni_id: {

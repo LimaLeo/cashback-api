@@ -1,19 +1,19 @@
 const { Sequelize, Model, DataTypes } = require("sequelize");
-const client = require("../../connect/mysql");
+const client = require("../../../connect/mysql");
 
-const StatusType = client.define("statusType", {
+const Item = client.define("items", {
     ni_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    tx_type: {
+    bl_name: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.BOOLEAN,
     },
-    tx_description: {
+    ni_price: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.DOUBLE,
     },
     dt_create_at: {
         allowNull: false,
@@ -24,4 +24,4 @@ const StatusType = client.define("statusType", {
     timestamps: false
 });
 
-module.exports = StatusType;
+module.exports = Item;

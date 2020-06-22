@@ -1,4 +1,4 @@
-const Item = require("../models/items.model");
+const Item = require("../models/entities/items.model");
 
 function create(item) {
     return new Promise(async (resolve, reject) => {

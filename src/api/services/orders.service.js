@@ -1,4 +1,4 @@
-const Order = require("../models/orders.model");
+const Order = require("../models/entities/orders.model");
 
 function create(cashback) {
     return new Promise(async (resolve, reject) => {

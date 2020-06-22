@@ -1,29 +1,22 @@
 const { Sequelize, Model, DataTypes } = require("sequelize");
-const client = require("../../connect/mysql");
+const client = require("../../../connect/mysql");
 
-const User = client.define("users", {
+const StatusType = client.define("statusType", {
     ni_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    tx_firstName: {
+    tx_type: {
         allowNull: false,
         type: DataTypes.STRING,
     },
-    tx_lastName: {
-        allowNull: false,
-        type: DataTypes.STRING,
-    },
-    tx_cpf: {
-        allowNull: false,
-        type: DataTypes.STRING,
-    },
-    tx_email: {
+    tx_description: {
         allowNull: false,
         type: DataTypes.STRING,
     },
     dt_create_at: {
+        allowNull: false,
         type: Sequelize.DATE,
         defaultValue: new Date(),
     },
@@ -31,4 +24,4 @@ const User = client.define("users", {
     timestamps: false
 });
 
-module.exports = User;
+module.exports = StatusType;
