@@ -1,16 +1,14 @@
 const saveOrder = require("../resources/requests/saveOrder.resource");
 const updateOrder = require("../resources/requests/updateOrder.resource");
 const getById = require("../resources/requests/getById.resource");
-// const controllers = require('../controllers/authentication.login.controllers');
+const controllers = require('../controllers/orderItem.controller');
 
 module.exports = [
   {
     method: 'POST',
     path: '/orderItems',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.create,
       tags: ['api'],
       validate: {
         payload: saveOrder
@@ -21,9 +19,7 @@ module.exports = [
     method: 'PUT',
     path: '/orderItems/{id}',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.updateById,
       tags: ['api'],
       validate: {
         payload: updateOrder
@@ -34,9 +30,7 @@ module.exports = [
     method: 'DELETE',
     path: '/orderItems/{id}',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.deleteById,
       tags: ['api'],
       validate: {
         params: getById,
@@ -47,9 +41,7 @@ module.exports = [
     method: 'GET',
     path: '/orderItems/{id}',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.getById,
       tags: ['api'],
       validate: {
         params: getById

@@ -1,16 +1,14 @@
 const saveStatusType = require("../resources/requests/saveStatusType.resource");
 const updateStatusType = require("../resources/requests/updateStatusType.resource");
 const getById = require("../resources/requests/getById.resource");
-// const controllers = require('../controllers/authentication.login.controllers');
+const controllers = require('../controllers/statusType.controller');
 
 module.exports = [
   {
     method: 'POST',
     path: '/statusType',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.create,
       tags: ['api'],
       validate: {
         payload: saveStatusType,
@@ -21,9 +19,7 @@ module.exports = [
     method: 'PUT',
     path: '/statusType/{id}',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.updateById,
       tags: ['api'],
       validate: {
         params: getById,
@@ -35,9 +31,7 @@ module.exports = [
     method: 'DELETE',
     path: '/statusType/{id}',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.deleteById,
       tags: ['api'],
       validate: {
         params: getById,
@@ -48,9 +42,7 @@ module.exports = [
     method: 'GET',
     path: '/statusType/{id}',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.getById,
       tags: ['api'],
       validate: {
         params: getById,

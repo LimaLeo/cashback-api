@@ -1,16 +1,14 @@
 const saveCashback = require("../resources/requests/saveCashback.resource");
 const updateCashback = require("../resources/requests/updateCashback.resource");
 const getById = require("../resources/requests/getById.resource");
-// const controllers = require('../controllers/authentication.login.controllers');
+const controllers = require('../controllers/cashbacks.controller');
 
 module.exports = [
   {
     method: 'POST',
     path: '/cashbacks',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.create,
       tags: ['api'],
       validate: {
         payload: saveCashback
@@ -21,9 +19,7 @@ module.exports = [
     method: 'PUT',
     path: '/cashbacks/{id}',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.updateById,
       tags: ['api'],
       validate: {
         params: getById,
@@ -35,9 +31,7 @@ module.exports = [
     method: 'DELETE',
     path: '/cashbacks/{id}',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.deleteById,
       tags: ['api'],
       validate: {
         params: getById,
@@ -48,9 +42,7 @@ module.exports = [
     method: 'GET',
     path: '/cashbacks/{id}',
     options: {
-      handler: (request, h) => {
-        return {"name":"adam"};
-      },
+      handler: controllers.getById,
       tags: ['api'],
       validate: {
         params: getById,
