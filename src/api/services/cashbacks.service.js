@@ -3,6 +3,7 @@ const Cashback = require("../models/entities/cashbacks.model");
 function create(cashback) {
     return new Promise(async (resolve, reject) => {
         try {
+            // regras de negócio colocar na camada de domínio em model
             if (cashback.ni_order_value <= 1000) {
                 cashback.ni_value = cashback.ni_order_value * 0.1;
                 cashback.ni_percentage = 10;

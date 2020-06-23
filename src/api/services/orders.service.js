@@ -7,6 +7,7 @@ function create(order) {
             if (order.ni_user_id) {
                 let user = await usersService.getById(order.ni_user_id);
 
+                // regras de negócio colocar na camada de domínio em model
                 if (user.tx_cpf == "15350946056") {
                     // "Approved"
                     order.ni_status_type_id = 1;
@@ -29,7 +30,8 @@ function updateById(id, order) {
     return new Promise(async (resolve, reject) => {
         try {
             let response;
-
+            
+            // regras de negócio colocar na camada de domínio em model
             if (order.ni_user_id && 
                 order.ni_status_type_id == undefined) {
                 let user = await usersService.getById(order.ni_user_id);
@@ -92,6 +94,7 @@ function deleteById(id) {
         try {
             _order = await getById(id);
 
+            // regras de negócio colocar na camada de domínio em model
             if (_order.ni_status_type_id == 2) {
                 let response = await Order.destroy({
                     where: {

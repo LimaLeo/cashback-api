@@ -4,6 +4,7 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
+    "test-connection-db": "node ./node_modules/mocha/bin/mocha \"src/tests/unit/test-connection-db.js\" --timeout=10000 --exit",
     "dev": "node src/index.js"
   },
   "dependencies": {
@@ -26,6 +27,8 @@
     "sequelize": "^5.21.13"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1",
     "nodemon": "^1.19.1"
   },
   "engines": {
