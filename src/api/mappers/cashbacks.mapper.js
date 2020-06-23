@@ -4,7 +4,7 @@ const objectMapper = require("object-mapper");
 
 function createRequest(entry) {
   const map = {
-    "value": "ni_value",
+    "orderValue": "ni_order_value",
     "userId": "ni_user_id",
   };
 
@@ -15,6 +15,8 @@ function createResponse(entry) {
   const map = {
     "ni_id": "id",
     "ni_order_value": "orderValue",
+    "ni_value": "value",
+    "ni_percentage": "percentage",
     "ni_user_id": "userId",
   };
 
@@ -23,8 +25,10 @@ function createResponse(entry) {
 
 function updateRequest(entry) {
   const map = {
-    "status": "bl_status",
-    "orderId": "ni_order_id",
+    "ni_order_value": "orderValue",
+    "ni_value": "value",
+    "ni_percentage": "percentage",
+    "ni_user_id": "userId",
   };
 
   return objectMapper(entry, map);
