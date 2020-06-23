@@ -1,5 +1,6 @@
 const Joi = require('joi');
 const saveUser = require("../resources/requests/saveUser.resource");
+const saveUserLogin = require("../resources/requests/saveUserLogin.resource");
 const updateUser = require("../resources/requests/updateUser.resource");
 const getById = require("../resources/requests/getById.resource");
 const controllers = require('../controllers/users.controller');
@@ -13,6 +14,17 @@ module.exports = [
       tags: ['api'],
       validate: {
         payload: saveUser
+      }
+    }
+  },
+  {
+    method: 'POST',
+    path: '/users/login',
+    options: {
+      handler: controllers.login,
+      tags: ['api'],
+      validate: {
+        payload: saveUserLogin
       }
     }
   },

@@ -21,6 +21,21 @@ const create = async (request, h) => {
     }
 }
 
+const login = async (request, h) => {
+    try {
+        let resource = request.payload;
+        let email = resource.email;
+        resource.password = md5(resource.password);
+        resource = mappers.createRequest(resource);
+        let exist = await services.exist(email);
+        let response  = await services.login(resource);
+
+        return response;
+    } catch (error) {
+        return Boom.badData(error);
+    }
+}
+
 const updateById = async (request, h) => {
     try {
         let id = request.params.id;
@@ -62,4 +77,5 @@ module.exports = {
     updateById,
     getById,
     deleteById,
+    login,
 }

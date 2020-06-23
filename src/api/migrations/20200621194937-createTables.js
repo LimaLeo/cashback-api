@@ -50,7 +50,15 @@ const up = () => {
       type: Sequelize.DATE,
       defaultValue: new Date(),
     },
-  });
+  }, {
+    indexes: [
+      {
+        unique: true,
+        fields: ['tx_email', 'tx_cpf']
+      }
+    ]
+  }
+  );
 
   queryInterface.createTable("statusTypes", {
     ni_id: {

@@ -12,6 +12,44 @@ function create(user) {
     });
 }
 
+function exist(email) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response = await User.findOne({
+                where: {
+                    tx_email: email
+                }
+            });
+
+            resolve(response.dataValues);
+        } catch (error) {
+            reject("Usuário não existe, por favor se cadastrar");
+        }
+    });
+}
+
+function login(user) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response = await User.findOne({
+                where: {
+                    tx_email: user.tx_email
+                }
+            });
+            let password = response.dataValues.tx_password;
+
+            if (user.tx_password == password) {
+                resolve("Login realizado com sucesso!");
+            } else{
+                resolve("Senha incorreta!");
+            }
+
+        } catch (error) {
+            reject("Usuário não existe, por favor se cadastrar");
+        }
+    });
+}
+
 function updateById(id, user) {
     return new Promise(async (resolve, reject) => {
         try {
@@ -78,4 +116,6 @@ module.exports = {
     updateById,
     getById,
     deleteById,
+    exist,
+    login,
 }
