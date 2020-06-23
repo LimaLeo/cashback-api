@@ -13,7 +13,15 @@ const Cashback = client.define("cashbacks", {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
+    ni_order_value: {
+        allowNull: false,
+        type: DataTypes.DOUBLE,
+    },
     ni_value: {
+        allowNull: false,
+        type: DataTypes.DOUBLE,
+    },
+    ni_percentage: {
         allowNull: false,
         type: DataTypes.DOUBLE,
     },

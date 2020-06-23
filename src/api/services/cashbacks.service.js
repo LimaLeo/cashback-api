@@ -3,6 +3,17 @@ const Cashback = require("../models/entities/cashbacks.model");
 function create(cashback) {
     return new Promise(async (resolve, reject) => {
         try {
+            if (cashback.ni_order_value <= 1000) {
+                cashback.ni_value = cashback.ni_order_value * 0.1;
+                cashback.ni_percentage = 10;
+            } else if (cashback.ni_order_value <= 1500) {
+                cashback.ni_value = cashback.ni_order_value * 0.15;
+                cashback.ni_percentage = 15;
+            } else {
+                cashback.ni_value = cashback.ni_order_value * 0.2;
+                cashback.ni_percentage = 20;
+            }
+
             let response = await Cashback.create(cashback);
 
             resolve(response.dataValues);

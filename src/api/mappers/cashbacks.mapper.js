@@ -14,7 +14,7 @@ function createRequest(entry) {
 function createResponse(entry) {
   const map = {
     "ni_id": "id",
-    "ni_value": "value",
+    "ni_order_value": "orderValue",
     "ni_user_id": "userId",
   };
 

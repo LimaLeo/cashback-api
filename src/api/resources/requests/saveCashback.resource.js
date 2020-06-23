@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 module.exports = {
-    value: Joi.number()
+    orderValue: Joi.number()
         .integer()
         .required(),
     userId: Joi 
