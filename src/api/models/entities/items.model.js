@@ -7,9 +7,9 @@ const Item = client.define("items", {
         autoIncrement: true,
         primaryKey: true
     },
-    bl_name: {
+    tx_name: {
         allowNull: false,
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.STRING,
     },
     ni_price: {
         allowNull: false,

@@ -79,7 +79,7 @@ const up = () => {
 };
 
 const down = () => {
-  queryInterface.dropTable('statusType');
+  queryInterface.dropTable('statusTypes');
   queryInterface.dropTable('users');
 
   return queryInterface;

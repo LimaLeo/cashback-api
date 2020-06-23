@@ -48,7 +48,7 @@ const up = () => {
     },
   });
 
-  queryInterface.createTable("statusType", {
+  queryInterface.createTable("statusTypes", {
     ni_id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
@@ -97,9 +97,9 @@ const up = () => {
       autoIncrement: true,
       primaryKey: true
     },
-    bl_name: {
+    tx_name: {
       allowNull: false,
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
     },
     ni_price: {
       allowNull: false,
@@ -168,7 +168,7 @@ const up = () => {
 };
 
 const down = () => {
-  queryInterface.dropTable('statusType');
+  queryInterface.dropTable('statusTypes');
   queryInterface.dropTable('users');
 
   return queryInterface;

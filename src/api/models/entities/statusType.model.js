@@ -1,7 +1,7 @@
 const { Sequelize, Model, DataTypes } = require("sequelize");
 const client = require("../../../connect/mysql");
 
-const StatusType = client.define("statusType", {
+const StatusType = client.define("statusTypes", {
     ni_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
