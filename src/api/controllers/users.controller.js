@@ -11,7 +11,6 @@ const create = async (request, h) => {
         let resource = request.payload;
         resource = mappers.createRequest(resource);
         resource.tx_password = md5(resource.tx_password);
-
         let response  = await services.create(resource);
         response = mappers.createResponse(response);
 
