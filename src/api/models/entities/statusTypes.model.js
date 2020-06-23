@@ -1,30 +1,28 @@
 'use strict'
 
 module.exports = (sequelize, DataTypes, Sequelize) => {
-    const OrderItems = sequelize.define("orderItems", {
+    const StatusTypes = sequelize.define("statusTypes", {
         ni_id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
-        ni_quantity: {
+        tx_type: {
             allowNull: false,
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
+        },
+        tx_description: {
+            allowNull: false,
+            type: DataTypes.STRING,
         },
         dt_create_at: {
             allowNull: false,
             type: Sequelize.DATE,
             defaultValue: new Date(),
         },
-        ni_order_id: {
-            type: Sequelize.INTEGER,
-        },
-        ni_item_id: {
-            type: Sequelize.INTEGER,
-        },
     }, {
-        timestamps: false,
+        timestamps: false
     });
 
-    return OrderItems;
+    return StatusTypes
 }

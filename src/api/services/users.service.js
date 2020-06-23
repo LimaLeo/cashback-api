@@ -1,9 +1,9 @@
-const User = require("../models/entities/users.model");
+const entities = require("../models/entities/");
 
 function create(user) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await User.create(user);
+            let response = await entities.Users.create(user);
 
             resolve(response.dataValues);
         } catch (error) {
@@ -15,7 +15,7 @@ function create(user) {
 function exist(email) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await User.findOne({
+            let response = await entities.Users.findOne({
                 where: {
                     tx_email: email
                 }
@@ -31,7 +31,7 @@ function exist(email) {
 function login(user) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await User.findOne({
+            let response = await entities.Users.findOne({
                 where: {
                     tx_email: user.tx_email
                 }
@@ -53,7 +53,7 @@ function login(user) {
 function updateById(id, user) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await User.update(user, {
+            let response = await entities.Users.update(user, {
                 where: {
                     ni_id: id
                 }
@@ -73,7 +73,7 @@ function updateById(id, user) {
 function getById(id) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await User.findOne({
+            let response = await entities.Users.findOne({
                 where: {
                     ni_id: id
                 }
@@ -94,7 +94,7 @@ function getById(id) {
 function deleteById(id) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await User.destroy({
+            let response = await entities.Users.destroy({
                 where: {
                     ni_id: id
                 }

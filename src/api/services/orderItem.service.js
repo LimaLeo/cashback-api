@@ -1,9 +1,9 @@
-const OrderItem = require("../models/entities/orderItem.model");
+const entities = require("../models/entities/");
 
 function create(orderItem) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await OrderItem.create(orderItem);
+            let response = await entities.OrderItems.create(orderItem);
 
             resolve(response.dataValues);
         } catch (error) {
@@ -15,7 +15,7 @@ function create(orderItem) {
 function updateById(id, orderItem) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await OrderItem.update(orderItem, {
+            let response = await entities.OrderItems.update(orderItem, {
                 where: {
                     ni_id: id
                 }
@@ -35,7 +35,7 @@ function updateById(id, orderItem) {
 function getById(id) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await OrderItem.findOne({
+            let response = await entities.OrderItems.findOne({
                 where: {
                     ni_id: id
                 }
@@ -56,7 +56,7 @@ function getById(id) {
 function deleteById(id) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await OrderItem.destroy({
+            let response = await entities.OrderItems.destroy({
                 where: {
                     ni_id: id
                 }

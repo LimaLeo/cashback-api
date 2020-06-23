@@ -1,9 +1,9 @@
-const StatusType = require("../models/entities/statusType.model");
+const entities = require("../models/entities/");
 
 function create(statusType) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await StatusType.create(statusType);
+            let response = await entities.StatusTypes.create(statusType);
 
             resolve(response.dataValues);
         } catch (error) {
@@ -15,7 +15,7 @@ function create(statusType) {
 function updateById(id, statusType) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await StatusType.update(statusType, {
+            let response = await entities.StatusTypes.update(statusType, {
                 where: {
                     ni_id: id
                 }
@@ -35,7 +35,7 @@ function updateById(id, statusType) {
 function getById(id) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await StatusType.findOne({
+            let response = await entities.StatusTypes.findOne({
                 where: {
                     ni_id: id
                 }
@@ -56,7 +56,7 @@ function getById(id) {
 function deleteById(id) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await StatusType.destroy({
+            let response = await entities.StatusTypes.destroy({
                 where: {
                     ni_id: id
                 }

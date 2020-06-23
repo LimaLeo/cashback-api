@@ -1,4 +1,4 @@
-const Cashback = require("../models/entities/cashbacks.model");
+const entities = require("../models/entities/");
 const { boticarioV1 } = require('../httpClients/boticario');
 
 
@@ -17,7 +17,7 @@ function create(cashback) {
                 cashback.ni_percentage = 20;
             }
 
-            let response = await Cashback.create(cashback);
+            let response = await entities.Cashbacks.create(cashback);
 
             resolve(response.dataValues);
         } catch (error) {
@@ -29,7 +29,7 @@ function create(cashback) {
 function updateById(id, cashback) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await Cashback.update(cashback, {
+            let response = await entities.Cashbacks.update(cashback, {
                 where: {
                     ni_id: id
                 }
@@ -49,7 +49,7 @@ function updateById(id, cashback) {
 function getById(id) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await Cashback.findOne({
+            let response = await entities.Cashbacks.findOne({
                 where: {
                     ni_id: id
                 }
@@ -70,7 +70,7 @@ function getById(id) {
 function deleteById(id) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await Cashback.destroy({
+            let response = await entities.Cashbacks.destroy({
                 where: {
                     ni_id: id
                 }

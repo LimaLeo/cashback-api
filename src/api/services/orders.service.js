@@ -1,5 +1,4 @@
-const Order = require("../models/entities/orders.model");
-const OrderItem = require("../models/entities/orderItem.model");
+const entities = require("../models/entities/");
 const usersService = require("./users.service")
 
 function create(order) {
@@ -18,7 +17,7 @@ function create(order) {
                 }
             }
 
-            let response = await Order.create(order);
+            let response = await entities.Orders.create(order);
 
             resolve(response.dataValues);
         } catch (error) {
@@ -31,9 +30,9 @@ function updateById(id, order) {
     return new Promise(async (resolve, reject) => {
         try {
             let response;
-            
+
             // regras de negócio colocar na camada de domínio em model
-            if (order.ni_user_id && 
+            if (order.ni_user_id &&
                 order.ni_status_type_id == undefined) {
                 let user = await usersService.getById(order.ni_user_id);
 
@@ -49,7 +48,7 @@ function updateById(id, order) {
             _order = await getById(id);
 
             if (_order.ni_status_type_id == 2) {
-                response = await Order.update(order, {
+                response = await entities.Orders.update(order, {
                     where: {
                         ni_id: id
                     }
@@ -72,7 +71,7 @@ function updateById(id, order) {
 function getById(id) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await Order.findOne({
+            let response = await entities.Orders.findOne({
                 where: {
                     ni_id: id
                 }
@@ -93,10 +92,18 @@ function getById(id) {
 function getAllById(id) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await Order.findOne({
+            let response = await entities.Orders.findOne({
                 include: [
                     {
-                        model: OrderItem,
+                        model: entities.OrderItems,
+                        include: [
+                            {
+                                model: entities.Items
+                            }
+                        ]
+                    },
+                    {
+                        model: entities.Cashbacks,
                     }
                 ],
                 where: {
@@ -123,12 +130,12 @@ function deleteById(id) {
 
             // regras de negócio colocar na camada de domínio em model
             if (_order.ni_status_type_id == 2) {
-                let response = await Order.destroy({
+                let response = await entities.Orders.destroy({
                     where: {
                         ni_id: id
                     }
                 });
-    
+
                 if (response > 0) {
                     resolve("Excluído com sucesso.");
                 } else {
