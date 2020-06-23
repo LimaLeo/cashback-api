@@ -1,6 +1,7 @@
 const saveCashback = require("../resources/requests/saveCashback.resource");
 const updateCashback = require("../resources/requests/updateCashback.resource");
 const getById = require("../resources/requests/getById.resource");
+const getByCpf = require("../resources/requests/getByCpf.resource");
 const controllers = require('../controllers/cashbacks.controller');
 
 module.exports = [
@@ -46,6 +47,17 @@ module.exports = [
       tags: ['api'],
       validate: {
         params: getById,
+      }
+    }
+  },
+  {
+    method: 'GET',
+    path: '/cashbacks/all/{cpf}',
+    options: {
+      handler: controllers.getAccumulatedByCpf,
+      tags: ['api'],
+      validate: {
+        params: getByCpf,
       }
     }
   },

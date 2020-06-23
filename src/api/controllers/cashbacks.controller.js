@@ -54,9 +54,21 @@ const deleteById = async (request, h) => {
     }
 }
 
+const getAccumulatedByCpf = async (request, h) => {
+    try {
+        let cpf = request.params.cpf;
+        let response  = await services.getAccumulatedByCpf(cpf);
+
+        return response;
+    } catch (error) {
+        return Boom.badData(error);
+    }
+}
+
 module.exports = {
     create,
     updateById,
     getById,
     deleteById,
+    getAccumulatedByCpf,
 }

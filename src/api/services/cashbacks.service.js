@@ -1,4 +1,6 @@
 const Cashback = require("../models/entities/cashbacks.model");
+const { boticarioV1 } = require('../httpClients/boticario');
+
 
 function create(cashback) {
     return new Promise(async (resolve, reject) => {
@@ -76,12 +78,24 @@ function deleteById(id) {
 
             if (response > 0) {
                 resolve("Excluído com sucesso.");
-              } else {
+            } else {
                 reject("Não foi possível excluir.");
-              }
+            }
         } catch (error) {
             reject(new Error(error));
         }
+    });
+}
+
+function getAccumulatedByCpf(cpf) {
+    return new Promise(async (resolve, reject) => {
+        boticarioV1.get(`/v1/cashback?cpf=${cpf}`)
+            .then(result => {
+                resolve(result.data);
+            })
+            .catch(error => {
+                reject(error);
+            })
     });
 }
 
@@ -90,4 +104,5 @@ module.exports = {
     updateById,
     getById,
     deleteById,
+    getAccumulatedByCpf,
 }
