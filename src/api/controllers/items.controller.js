@@ -9,7 +9,6 @@ const create = async (request, h) => {
     try {
         let resource = request.payload;
         resource = mappers.createRequest(resource);
-        resource.create_at = new Date().toDateString();
         let response  = await services.create(resource);
         response = mappers.createResponse(response);
 
