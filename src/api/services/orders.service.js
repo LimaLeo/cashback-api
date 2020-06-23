@@ -89,10 +89,10 @@ function getById(id) {
     });
 }
 
-function getAllById(id) {
+function getAll() {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await entities.Orders.findOne({
+            let response = await entities.Orders.findAll({
                 include: [
                     {
                         model: entities.OrderItems,
@@ -105,14 +105,11 @@ function getAllById(id) {
                     {
                         model: entities.Cashbacks,
                     }
-                ],
-                where: {
-                    ni_id: id
-                }
+                ]
             });
 
             if (response !== null) {
-                resolve(response.dataValues);
+                resolve(response);
             } else {
                 reject("Não foi possível realizar consulta.");
             }
@@ -155,5 +152,5 @@ module.exports = {
     updateById,
     getById,
     deleteById,
-    getAllById,
+    getAll,
 }

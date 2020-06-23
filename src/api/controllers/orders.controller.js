@@ -43,10 +43,9 @@ const getById = async (request, h) => {
     }
 }
 
-const getAllById = async (request, h) => {
+const getAll = async (request, h) => {
     try {
-        let id = request.params.id;
-        let response  = await services.getAllById(id);
+        let response  = await services.getAll();
         // response = mappers.createResponse(response);
 
         return response;
@@ -71,5 +70,5 @@ module.exports = {
     updateById,
     getById,
     deleteById,
-    getAllById,
+    getAll,
 }

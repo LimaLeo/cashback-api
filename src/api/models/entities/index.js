@@ -68,14 +68,14 @@ entities.Items.hasMany(entities.OrderItems, {
     }
 });
 
-entities.Orders.belongsTo(entities.Cashbacks, {
+entities.Cashbacks.belongsTo(entities.Orders, {
     foreignKey: {
-        name: 'ni_id'
+        name: 'ni_order_id'
     }
 });
-entities.Cashbacks.hasOne(entities.Orders, {
+entities.Orders.hasOne(entities.Cashbacks, {
     foreignKey: {
-        name: 'ni_id'
+        name: 'ni_order_id'
     }
 });
 
