@@ -1,5 +1,6 @@
 const { Sequelize, Model, DataTypes } = require("sequelize");
 const client = require("../../../connect/mysql");
+const entities = require("../entities");
 
 const OrderItem = client.define("orderItems", {
     ni_id: {
@@ -23,7 +24,17 @@ const OrderItem = client.define("orderItems", {
         type: Sequelize.INTEGER,
     },
 }, {
-    timestamps: false
+    timestamps: false,
+    classMethods: {
+        associate: function (models) {
+            entities.StatusType.belongsTo(OrderItem);
+            entities.Users.belongsTo(OrderItem);
+        }
+      }
 });
+
+OrderItem.belongsTo(entities.StatusType, {foreignKey: 'ni_status_type_id'});
+OrderItem.belongsTo(entities.Users, {foreignKey: 'ni_user_id'});
+
 
 module.exports = OrderItem;

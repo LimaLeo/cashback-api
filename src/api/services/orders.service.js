@@ -1,4 +1,5 @@
 const Order = require("../models/entities/orders.model");
+const OrderItem = require("../models/entities/orderItem.model");
 const usersService = require("./users.service")
 
 function create(order) {
@@ -89,6 +90,32 @@ function getById(id) {
     });
 }
 
+function getAllById(id) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response = await Order.findOne({
+                include: [
+                    {
+                        model: OrderItem,
+                    }
+                ],
+                where: {
+                    ni_id: id
+                }
+            });
+
+            if (response !== null) {
+                resolve(response.dataValues);
+            } else {
+                reject("Não foi possível realizar consulta.");
+            }
+
+        } catch (error) {
+            reject(new Error(error));
+        }
+    });
+}
+
 function deleteById(id) {
     return new Promise(async (resolve, reject) => {
         try {
@@ -121,4 +148,5 @@ module.exports = {
     updateById,
     getById,
     deleteById,
+    getAllById,
 }

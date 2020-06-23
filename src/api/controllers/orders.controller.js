@@ -43,6 +43,18 @@ const getById = async (request, h) => {
     }
 }
 
+const getAllById = async (request, h) => {
+    try {
+        let id = request.params.id;
+        let response  = await services.getAllById(id);
+        // response = mappers.createResponse(response);
+
+        return response;
+    } catch (error) {
+        return Boom.badData(error);
+    }
+}
+
 const deleteById = async (request, h) => {
     try {
         let id = request.params.id;
@@ -59,4 +71,5 @@ module.exports = {
     updateById,
     getById,
     deleteById,
+    getAllById,
 }

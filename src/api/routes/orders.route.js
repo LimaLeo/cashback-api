@@ -49,4 +49,15 @@ module.exports = [
       }
     }
   },
+  {
+    method: 'GET',
+    path: '/orders/all/{id}',
+    options: {
+      handler: controllers.getAllById,
+      tags: ['api'],
+      validate: {
+        params: getById,
+      }
+    }
+  },
 ];
