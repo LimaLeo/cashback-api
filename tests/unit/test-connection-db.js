@@ -3,12 +3,12 @@
 
 const chai = require("chai");
 const expect = chai.expect;
-const Order = require("../../api/models/entities/orders.model");
+const entities = require("../../src/api/models/entities/");
 const OrderId = 1;
 
 describe("Test Get Order Database", function () {
     it("verifies successful response", async () => {        
-        const order = await Order.findOne({
+        const order = await entities.Orders.findOne({
             where: {
                 ni_id: OrderId                
             }
