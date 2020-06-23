@@ -4,7 +4,7 @@ const dotenv = require("dotenv").config();
 const plugins = require("./plugins");
 const routes = require("./utils/routes");
 const config = require("./config");
-const connect = require("./connect");
+const factories = require("./factories");
 
 async function start() {
   const server = new Hapi.Server({

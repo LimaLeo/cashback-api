@@ -1,5 +1,5 @@
 const { Sequelize, Model, DataTypes } = require("sequelize");
-const sequelize = require("../../../connect/mysql");
+const sequelize = require("../../../factories/mysql");
 
 const entities = {};
 
