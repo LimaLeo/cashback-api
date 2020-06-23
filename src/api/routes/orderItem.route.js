@@ -1,5 +1,5 @@
-const saveOrder = require("../resources/requests/saveOrder.resource");
-const updateOrder = require("../resources/requests/updateOrder.resource");
+const saveOrderItem = require("../resources/requests/saveOrderItem.resource");
+const updateOrderItem = require("../resources/requests/updateOrderItem.resource");
 const getById = require("../resources/requests/getById.resource");
 const controllers = require('../controllers/orderItem.controller');
 
@@ -11,7 +11,7 @@ module.exports = [
       handler: controllers.create,
       tags: ['api'],
       validate: {
-        payload: saveOrder
+        payload: saveOrderItem
       }
     }
   },
@@ -22,7 +22,7 @@ module.exports = [
       handler: controllers.updateById,
       tags: ['api'],
       validate: {
-        payload: updateOrder
+        payload: updateOrderItem
       }
     }
   },
