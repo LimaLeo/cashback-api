@@ -32,8 +32,22 @@ function updateRequest(entry) {
   return objectMapper(entry, map);
 }
 
+function GetAllResponse(entry) {
+  const map = {
+    "ni_id": "codigo",
+    "ni_total": "valor",
+    "dt_create_at": "data",
+    "cashback.ni_percentage": "% de Cashback",
+    "cashback.ni_value": "valor Cashback",
+    "statusType.tx_description": "status"
+  }
+
+  return objectMapper(entry, map);
+}
+
 module.exports = {
   createRequest,
   createResponse,
   updateRequest,
+  GetAllResponse,
 };

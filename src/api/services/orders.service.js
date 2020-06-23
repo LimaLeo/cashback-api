@@ -1,5 +1,5 @@
 const entities = require("../models/entities/");
-const usersService = require("./users.service")
+const usersService = require("./users.service");
 
 function create(order) {
     return new Promise(async (resolve, reject) => {
@@ -104,6 +104,9 @@ function getAll() {
                     },
                     {
                         model: entities.Cashbacks,
+                    },
+                    {
+                        model: entities.StatusTypes,
                     }
                 ]
             });

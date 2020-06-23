@@ -46,7 +46,7 @@ const getById = async (request, h) => {
 const getAll = async (request, h) => {
     try {
         let response  = await services.getAll();
-        // response = mappers.createResponse(response);
+        response = mappers.GetAllResponse(response);
 
         return response;
     } catch (error) {
