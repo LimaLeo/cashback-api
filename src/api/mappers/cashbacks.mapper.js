@@ -18,6 +18,7 @@ function createResponse(entry) {
     "ni_value": "value",
     "ni_percentage": "percentage",
     "ni_user_id": "userId",
+    "ni_order_id": "orderId",
   };
 
   return objectMapper(entry, map);
@@ -25,17 +26,12 @@ function createResponse(entry) {
 
 function updateRequest(entry) {
   const map = {
-    "ni_order_value": "orderValue",
-    "ni_value": "value",
-    "ni_percentage": "percentage",
-    "ni_user_id": "userId",
+    "status": "bl_status",
+    "orderId": "ni_order_id",
   };
 
   return objectMapper(entry, map);
 }
-
-
-
 
 module.exports = {
   createRequest,
