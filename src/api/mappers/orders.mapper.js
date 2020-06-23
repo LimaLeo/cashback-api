@@ -24,7 +24,7 @@ function createResponse(entry) {
 
 function updateRequest(entry) {
   const map = {
-    "total": "tx_total",
+    "total": "ni_total",
     "statusTypeId": "ni_status_type_id",
     "userId": "ni_user_id",
   };

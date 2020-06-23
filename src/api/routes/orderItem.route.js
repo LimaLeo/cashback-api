@@ -22,6 +22,7 @@ module.exports = [
       handler: controllers.updateById,
       tags: ['api'],
       validate: {
+        params: getById,
         payload: updateOrderItem
       }
     }

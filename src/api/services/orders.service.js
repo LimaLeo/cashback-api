@@ -5,8 +5,8 @@ function create(order) {
     return new Promise(async (resolve, reject) => {
         try {
             if (order.ni_user_id) {
-                let user = await usersService.getById(order.ni_user_id); 
-                
+                let user = await usersService.getById(order.ni_user_id);
+
                 if (user.tx_cpf == "15350946056") {
                     // "Approved"
                     order.ni_status_type_id = 1;
@@ -28,9 +28,12 @@ function create(order) {
 function updateById(id, order) {
     return new Promise(async (resolve, reject) => {
         try {
-            if (order.ni_user_id) {
-                let user = await usersService.getById(order.ni_user_id); 
-                
+            let response;
+
+            if (order.ni_user_id && 
+                order.ni_status_type_id == undefined) {
+                let user = await usersService.getById(order.ni_user_id);
+
                 if (user.tx_cpf == "15350946056") {
                     // "Approved"
                     order.ni_status_type_id = 1;
@@ -40,16 +43,22 @@ function updateById(id, order) {
                 }
             }
 
-            let response = await Order.update(order, {
-                where: {
-                    ni_id: id
-                }
-            });
+            _order = await getById(id);
 
-            if (response[0] > 0) {
-                resolve("Atualizado com sucesso.");
+            if (_order.ni_status_type_id == 2) {
+                response = await Order.update(order, {
+                    where: {
+                        ni_id: id
+                    }
+                });
+
+                if (response[0] > 0) {
+                    resolve("Atualizado com sucesso.");
+                } else {
+                    reject("Não foi possível realizar a atualização.");
+                }
             } else {
-                reject("Não foi possível realizar a atualização.");
+                reject("Não foi possível realizar a atualização, status do pedido já foi aprovado");
             }
         } catch (error) {
             reject(new Error(error));
@@ -81,17 +90,23 @@ function getById(id) {
 function deleteById(id) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await Order.destroy({
-                where: {
-                    ni_id: id
-                }
-            });
+            _order = await getById(id);
 
-            if (response > 0) {
-                resolve("Excluído com sucesso.");
-              } else {
-                reject("Não foi possível excluir.");
-              }
+            if (_order.ni_status_type_id == 2) {
+                let response = await Order.destroy({
+                    where: {
+                        ni_id: id
+                    }
+                });
+    
+                if (response > 0) {
+                    resolve("Excluído com sucesso.");
+                } else {
+                    reject("Não foi possível excluir.");
+                }
+            } else {
+                reject("Não foi possível excluir, status do pedido já foi aprovado");
+            }
         } catch (error) {
             reject(new Error(error));
         }
