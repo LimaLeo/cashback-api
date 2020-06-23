@@ -1,9 +1,22 @@
 const Order = require("../models/entities/orders.model");
+const usersService = require("./users.service")
 
-function create(cashback) {
+function create(order) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await Order.create(cashback);
+            if (order.ni_user_id) {
+                let user = await usersService.getById(order.ni_user_id); 
+                
+                if (user.tx_cpf == "15350946056") {
+                    // "Approved"
+                    order.ni_status_type_id = 1;
+                } else {
+                    // "InValidation"
+                    order.ni_status_type_id = 2;
+                }
+            }
+
+            let response = await Order.create(order);
 
             resolve(response.dataValues);
         } catch (error) {
@@ -12,10 +25,22 @@ function create(cashback) {
     });
 }
 
-function updateById(id, cashback) {
+function updateById(id, order) {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await Order.update(cashback, {
+            if (order.ni_user_id) {
+                let user = await usersService.getById(order.ni_user_id); 
+                
+                if (user.tx_cpf == "15350946056") {
+                    // "Approved"
+                    order.ni_status_type_id = 1;
+                } else {
+                    // "InValidation"
+                    order.ni_status_type_id = 2;
+                }
+            }
+
+            let response = await Order.update(order, {
                 where: {
                     ni_id: id
                 }

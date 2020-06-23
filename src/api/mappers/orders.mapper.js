@@ -16,6 +16,7 @@ function createResponse(entry) {
     "ni_id": "id",
     "ni_total": "total",
     "ni_user_id": "userId",
+    "ni_status_type_id": "statusTypeId",
   };
 
   return objectMapper(entry, map);
@@ -25,14 +26,11 @@ function updateRequest(entry) {
   const map = {
     "total": "tx_total",
     "statusTypeId": "ni_status_type_id",
-    "lastName": "tx_lastName",
+    "userId": "ni_user_id",
   };
 
   return objectMapper(entry, map);
 }
-
-
-
 
 module.exports = {
   createRequest,
