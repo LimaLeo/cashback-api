@@ -9,4 +9,6 @@ module.exports = {
         .required(),
     email: Joi.string()
         .required(),
+    password: Joi.string()
+        .required(),
 };

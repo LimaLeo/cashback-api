@@ -7,7 +7,8 @@ function createRequest(entry) {
     "firstName": "tx_firstName",
     "lastName": "tx_lastName",
     "cpf": "tx_cpf",
-    "email": "tx_email"
+    "email": "tx_email",
+    "password": "tx_password",
   };
 
   return objectMapper(entry, map);

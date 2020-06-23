@@ -1,6 +1,7 @@
 "use strict";
 
 const Boom = require("@hapi/boom");
+const md5 = require("md5");
 
 const services = require("../services/users.service");
 const mappers = require("../mappers/users.mapper");
@@ -9,7 +10,8 @@ const create = async (request, h) => {
     try {
         let resource = request.payload;
         resource = mappers.createRequest(resource);
-        resource.create_at = new Date().toDateString();
+        resource.tx_password = md5(resource.tx_password);
+
         let response  = await services.create(resource);
         response = mappers.createResponse(response);
 

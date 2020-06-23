@@ -23,6 +23,10 @@ const User = client.define("users", {
         allowNull: false,
         type: DataTypes.STRING,
     },
+    tx_password: {
+        allowNull: false,
+        type: DataTypes.STRING,
+    },
     dt_create_at: {
         type: Sequelize.DATE,
         defaultValue: new Date(),
