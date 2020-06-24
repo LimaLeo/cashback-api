@@ -6,7 +6,9 @@ function create(orderItem) {
         try {
             let response = await entities.OrderItems.create(orderItem);
 
-            await orderService.updateTotalValueById(response.dataValues.ni_id);
+            await orderService.updateTotalValueById(response.dataValues.ni_order_id)
+                .then(result => result)
+                .catch(error => error);
 
             resolve(response.dataValues);
         } catch (error) {
@@ -23,8 +25,12 @@ function updateById(id, orderItem) {
                     ni_id: id
                 }
             });
-
-            await orderService.updateTotalValueById(id);
+            
+            if (orderItem.ni_order_id) {
+                await orderService.updateTotalValueById(orderItem.ni_order_id)
+                    .then(result => result)
+                    .catch(error => error);
+            }
 
             if (response[0] > 0) {
                 resolve("Atualizado com sucesso.");
