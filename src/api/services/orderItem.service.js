@@ -1,9 +1,12 @@
 const entities = require("../models/entities/");
+const orderService = require("./orders.service");
 
 function create(orderItem) {
     return new Promise(async (resolve, reject) => {
         try {
             let response = await entities.OrderItems.create(orderItem);
+
+            await orderService.updateTotalValueById(response.dataValues.ni_id);
 
             resolve(response.dataValues);
         } catch (error) {
@@ -20,6 +23,8 @@ function updateById(id, orderItem) {
                     ni_id: id
                 }
             });
+
+            await orderService.updateTotalValueById(id);
 
             if (response[0] > 0) {
                 resolve("Atualizado com sucesso.");

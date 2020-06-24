@@ -48,6 +48,11 @@ function updateById(id, order) {
             _order = await getById(id);
 
             if (_order.ni_status_type_id == 2) {
+                
+                if (_order = order) {
+                    resolve("Dados já atualizados.");
+                }
+
                 response = await entities.Orders.update(order, {
                     where: {
                         ni_id: id
@@ -123,6 +128,31 @@ function getAll() {
     });
 }
 
+function updateTotalValueById(id) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const result = await entities.sequelize.query(
+                'SELECT (SELECT sum(oi.ni_quantity * i.ni_price) AS total_value FROM b2c.orders AS o INNER JOIN b2c.orderItems AS oi ON o.ni_id = oi.ni_order_id INNER JOIN b2c.items AS i ON oi.ni_item_id = i.ni_id WHERE o.ni_id = :id) - ni_value AS total_value FROM b2c.cashbacks AS c WHERE c.ni_order_id = :id;'
+                , {
+                    replacements: { id: id },
+                    type: entities.Sequelize.QueryTypes.SELECT
+                });
+
+            if (result.length > 0) {
+                let order = await getById(id);
+                order.ni_total = result[0].total_value;
+                let response = updateById(id, order);
+
+                resolve(response);
+            } else {
+                reject("Não foi possível atualizar o preço.");
+            }
+        } catch (error) {
+            reject(new Error(error));
+        }
+    });
+};
+
 function deleteById(id) {
     return new Promise(async (resolve, reject) => {
         try {
@@ -156,4 +186,5 @@ module.exports = {
     getById,
     deleteById,
     getAll,
+    updateTotalValueById,
 }

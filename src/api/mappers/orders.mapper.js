@@ -39,7 +39,7 @@ function GetAllResponse(entry) {
     "dt_create_at": "data",
     "cashback.ni_percentage": "% de Cashback",
     "cashback.ni_value": "valor Cashback",
-    "statusType.tx_description": "status"
+    "statusType.tx_description": "status",
   }
 
   return objectMapper(entry, map);
